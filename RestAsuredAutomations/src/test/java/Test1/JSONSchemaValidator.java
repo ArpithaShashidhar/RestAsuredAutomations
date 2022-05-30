@@ -26,5 +26,20 @@ public class JSONSchemaValidator {
 				statusCode(200);
 				
 	}
+	
+
+	@Test
+	public void testGet()
+	{
+		
+		baseURI="https://reqres.in/api" ;
+		
+				given().
+			    get("/users?page=2").
+				then().
+				assertThat().
+				body(matchesJsonSchemaInClasspath("Schema.json")).
+				statusCode(200);
+		
 
 }
